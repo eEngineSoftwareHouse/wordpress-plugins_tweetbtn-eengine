@@ -1,0 +1,23 @@
+.tweet_btn {
+	padding: 2px 20px 2px 5px;
+	margin: 3px 5px;
+	font-size: 10px !important;
+	font-weight: bold;
+	text-align: left;
+	border-radius: 5px;
+	border: 1px #d0d0d0 solid;
+	color: #55ACEE;
+	background-image: url(tweetbtn.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: right center;
+	line-height: 25px;
+	transition: all 0.3s;
+}
+
+.tweet_btn:hover {
+	text-decoration: none;
+	color: white;
+	background-color: #16CCFF;
+	border: 1px #10a1c9 solid;
+}
