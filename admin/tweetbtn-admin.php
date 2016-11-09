@@ -1,5 +1,5 @@
 <div class="wrap">
-	<a href="http://www.eengine.pl"><img style="display: inline-block; vertical-align: middle" src="<?php echo plugins_url('eengine.png', __FILE__) ?>" alt="eengine.pl"></a>
+	<a href="http://eengine.pl"><img style="display: inline-block; vertical-align: middle" src="<?php echo plugins_url('eengine.png', __FILE__) ?>" alt="eengine.pl"></a>
 	<h2 style="display: inline-block; vertical-align: middle;margin-left: 25px;">Tweet Button<br><small>by <a style="text-decoration:none" href="http://www.eengine.pl" target="_blank">eEngine.pl</a></small></h2>
 	<hr>
 	<p>Remember that selected text to tweet will be automatically cutted to 145 characters</p>

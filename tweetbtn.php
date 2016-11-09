@@ -3,13 +3,13 @@
  * Plugin Name: eEngine.pl - Tweet button
  * Description: Put custom tweet button after any text marked with selection when editing.
  * Version: 1.0
- * Author: eEngine.pl
- * Author URI: http://www.eengine.pl
- * Plugin URI: http://www.eengine.pl
+ * Author: eEngine.pl / sciolkowski
+ * Author URI: http://eengine.pl
+ * Plugin URI: http://eengine.pl
  */
 
 
-// Strona z ustawieniami pluginu
+// Settings page
 function tweetbtn_menu(){
     add_options_page('Tweet Button Options', 'Tweet Button', 'manage_options', 'tweetbtn-menu', 'tweetbtn_options');
     add_action( 'admin_init', 'register_tweetbtn_settings' );
@@ -17,7 +17,6 @@ function tweetbtn_menu(){
 
 function register_tweetbtn_settings() {
     register_setting( 'tweetbtn-settings-group', 'tweetbtn_include_link' );
-    // register_setting( 'tweetbtn-settings-group', 'tweetbtn_button_css' );
     register_setting( 'tweetbtn-settings-group', 'tweetbtn_include_tag' );
 }
 
@@ -30,7 +29,7 @@ function tweetbtn_options(){
 
 
 
-// Wtyczka
+// Add Tweet Button to TinyMCE
 $tweetbtn_css = plugins_url( 'tweetbtn.css', __FILE__ );
 wp_enqueue_style( 'tweetbtn_css', $tweetbtn_css);
 
@@ -61,12 +60,12 @@ function add_plugin( $plugin_array ) {
     return $plugin_array;
 }
 
-// Budowanie Tweeta
+// Build tweet from shortcode content
 function tweet_function($attr, $content=null){
     global $post;
     $tweet = strip_tags($content);
 
-    // sprawdź czy ma zostać dodany link
+    // check plugin config for links settings
     $include_link = get_option('tweetbtn_include_link');
     $include_tag = get_option('tweetbtn_include_tag');
 
@@ -83,7 +82,7 @@ function tweet_function($attr, $content=null){
         $tag = '';
     }
 
-    // maksymalna długość tweeta to 145 znaków minus długość linka
+    // decrease max tweet length by link length
     $max_tweet_length = 145 - strlen($link) - strlen($tag);
 
     if (strlen($tweet) >= $max_tweet_length) {
@@ -102,7 +101,7 @@ function tweet_function($attr, $content=null){
 }
 
 
-// funkcja skracająca linki przez Google URL Shortener
+// Google URL Shortener
 function shorten_url($url) {
     $response = wp_remote_post( 'https://www.googleapis.com/urlshortener/v1/url', array(
         'body' => json_encode( array( 'longUrl' => esc_url_raw($url))),

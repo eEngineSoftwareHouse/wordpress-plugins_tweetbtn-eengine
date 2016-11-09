@@ -17,8 +17,8 @@
         getInfo : function() {
             return {
                 longname : "Tweet",
-                author : 'Szymon Ciolkowski',
-                authorurl : 'http://www.eengine.pl',
+                author : 'sciolkowski',
+                authorurl : 'http://eengine.pl',
                 version : "0.1"
             };
         }
